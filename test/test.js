@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 fixture('Pressing enter key should add a new todo item')
-    .page('http://lucasalmeida.dk/test/todo/#/');
+    .page('http://test.lucasalmeida.dk/todo/#/');
     
     test('Input value can be added with enter key', async t => {
         // Arange
