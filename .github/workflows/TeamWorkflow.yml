@@ -30,3 +30,21 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: test/todo/
+
+      - name: Install TestCafe
+        run: npm install -g testcafe
+
+      - name: Update APT
+        run: apt-get update
+
+      - name: Install Chromium
+        run: apt-get install -y chromium
+
+      - name : Run TestCafe tests
+        run: testcafe chromium:headless test/* --browser-init-timeout 60000
+
+      - name: Store artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: todo
+          path: dist/
